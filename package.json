@@ -1,0 +1,46 @@
+{
+  "name": "vine-react",
+  "version": "0.0.1",
+  "description": "Vine app implement w/ express and react.js",
+  "main": "./server.js",
+  "browser": "./modules/App.js",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "harmony": true
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "express": "~3.4.8",
+    "fibers": "~1.0.1",
+    "jsdom": "^0.11.0",
+    "node-jsx": "~0.9.0",
+    "react": "~0.10.0",
+    "react-async": "~0.9.1",
+    "react-router-component": "~0.18.0",
+    "request": "^2.36.0",
+    "superagent": "~0.17.0",
+    "underscore-node": "~0.1.2"
+  },
+  "devDependencies": {
+    "reactify": "~0.10.0",
+    "envify": "~1.2.0",
+    "browserify": "~3.32.1",
+    "connect-browserify": "~2.0.1",
+    "uglify-js": "~2.4.13",
+    "supervisor": "~0.5.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "supervisor -i node_modules server.js",
+    "build": "NODE_ENV=production browserify ./ | uglifyjs -cm 2>/dev/null > ./assets/bundle.js",
+    "start-prod": "NODE_ENV=production node server.js",
+    "clean": "rm -f ./assets/bundle.js"
+  },
+  "author": "Lior Shefer",
+  "license": "MIT"
+}
